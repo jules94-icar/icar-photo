@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ICAR × PHOTO</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#004848">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ICAR PHOTO">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0BAMAAADP4xsBAAAAMFBMVEX////q8PCyyMgaqZMaqJJul5ddi4sylYoWm4gTkYAPgHQ1bm4MZF4MWFYETEsASEgGfspaAAAEMElEQVR42u3aX2gcRRzA8e9e7k8uDWQbSvxTWu+0FEEkMUIfhNSY6JMPPSuVpkF7oS+2EZKglFSpBgRtaqWtNfpSJT6EQqsmFIIU294hSKmkcLUvEvPnEhEaS802kESyd/fzYbNJpOUuud0VKzMvN7d7fG73NzO/mZ07TfCq+FC0ohWtaEUrWtGKVrSiFa3o1ZWcQdobWs4YnE17Qv90HBZaDQ/o4VaAqWb36VsHrNepj92mzSaDpgjAmS/dpbPdBg/ss+qf97tKXxkg1KcD2knkmMuxDvbpADzT4WqsU8DBiFXXdgNZwyX6anLlOw3INRuu0Gbr3cemvnCFzt3r4Kq6YJGZ77N+75LqB/0e0RpyNOUNXdqBmfQoIE1xz2Lta1HT7r9GB7yjgz0FP+Iv9na3hTyLtVZzHzbjQsoz2jxgeBaQhV41GhWtaEUr2j1a94wuvOorli5907OAlPy3mzFwj5gGTrlC+/bf3RUO1rjT+UriwOg/LvolN/v1GvYq1kZvXblXsdNVuqoHsR8U7X0RtwKyrQM5agBoPbq7tLanA9OiI26nJ213bM3NuNqngpJDgPb2mmxZbfljXL6RtRRN/YlD0YpWtKIVfT/S+abdK32fAox8tOv5xSOZ1tKTQGbx94NDkWKn3bhPRHI7gcqEdeQ6ARGRGfuWp/NNuwUXC/u+3dqz8EbjaATgPcoNHaA5Diy8WJ9ycNWTbBSRbGyjiEhO98XaRGSGNusDwXxXXYiOaOMiIub6hIjMse569Qr6ji8fXaCHzKfLIgD+3tcAkw3RkZXLNXHQ+X5li1V54SaQIFY271a/Pk69VQmXG9CudZVsTi6fndYc0EnsFeqITibt1znRvny2LexgpWpgP2xVwjwPQsOr1uDZA9mBvY4WwSseAsZoAP9fVvueA6p6HeWQ9HK1iziEy9MA4V1RAlNOmlFfor8zckkaE7CjC8B/dqzFrMZBDomz16pn18ss66JUNk9sXhwyuUjeEVNoNE7wiFWfDcoE1bnBKI8G7dE4aX9vUbRppTqReLXESYjIoO6z6Yy+yUkOsTyZ1cZFt+7/dxJ2Don5nNBzemBaZC7ypJgE7Ruw6QkSxacnwufNx155+eHZn60BA/DJUobaQLuTfl03WHGuv2oYLvPc4rctZahSfbTIznd7dPFVRERGhuzpaig7NG7VRq6p58b/O13Slf98Zv8TnQ8Nj/1yauDCV+XH6trqpOOpt7a8HzpSNjkWdbYfcuvDq52HtQr/jvOdgRthHTjx/ZFr7d2v3z7d4jAgRuWzUb2JWMPN1DsRckYXvv7DNe/K473NAw53cfSLZoDQndNfB+iuIKcjF2LBlM6PhAr94FhoyMilxku1M+ObfstqT+vJ+ou+7T9sT9bc0DK1M3/WOqPVkFG0ohWtaEUrWtGKVrSiFV10+RvBE/W4G91BmwAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADABAMAAACg8nE0AAAAMFBMVEX////+/v7f6Oilv78aqZNwmJhWhoYanIoQhngOe281bm4Ta2UIZl8MVlQFTEwASEgpjd+XAAAEg0lEQVR42u3aT0wcVRwH8O+b2YXapHRKAlgNzbCRgG1qRxHLwXRp2sakxmQhGIppZOVi0CD0oMHQWhpMOGgoUfFmwD+k1v6jmraX1s5FU7x0rSH20LobDo0t4k7BBezuzM/DzK7buNldnHkxjW8uO/NmMp+d93vvN++9XUbgu0kQgAAEIAABCEAAAhCAAAQgAAEIINc2DRziCVw/DFwZ4Qfc7gGAC+O8gHv77c/jE3wAcwBgAGB+GeEBWP0RyMM29XbMe4CGI8A+zT5IveY9YOrA3jAA4F0gGeER5KYD9mfdkPdBvgnAl7lvkwbgqpfAnZ5/lp2f8A4w38tVWmxjLQbIeatiG+u/z6apboNzuk69xPt9kDzEFdgFXJngCWwPcQ4y69Y4x0BSxajiPwcaeANFNVSfC4B1X+McA0l7wIN8iTdwfYR3P7ig845BTKQKAQhAAAIQANAY5gv43uI8Lnr1QYmBnLtY8Q74KFfpXq3IQBVxTa7lj41dXjbTBgCpo/cVdXnfD86P8+xoUjNwPLNm4VO9B/o1mP3OQE4eVrxPFfKbgOms1e3TeOSiyi8Ay97V+CS7qg95Z9P6IQBoUvil6+0hoHFolU/AVvMnMmIwFJ6AeCcLQAACEIAABMBtyz98b5v9AQAdG0HdmPO2X9ohTwNAmzOO3PxZoZFCvk2TichsBVNQG7WLfoQUJyLSWCAQCAQU6UzeO1ARwCt4JmpNqpV2UQhqb+YU0S31UbfAIiqJiJbUIBGRpUpnt2UB9KnsFtBYLxER/SQTESXgXyzJBhZZNO8tCrai5Yg0akezug/APOpL193XDCnirpn+hkecK89eBvAOnvJXT61mPluoisIIOgeJEiJSWZTCwawqWpDIXRVFkJ6QrZkEkjFJxQc3ss6/IbucJxuZKpDagD9RBfh+dWovAtyZqnc9EW/O2j+NWmDNppgKAOfCAOSvXeciPWv/KPoAtm3QnhgGgIqTqktAQdYv61YMAwCO2H962H/znDqvu82mauZnjuU6rBjyrcfa9cDP6RWRmbJjboEjiKd7xDJuYMt31le7nst0tbUtc1Mus2kCfucg1EkhdJI1+SRTetP9IIEnXOYiS5XsZJMojzv7VheCacBS/W6T3TVsJSIyta20lH6alrWZnjwhRV0Cpia9TJRslaO0gGona8h/Z1N05r1F4Y4mfb/58xnMz/aoOI2AXfbQpkzrLMW3bl+ZdK+1prz2DBFp7LJzIhxMPwEVCEL+ifjvd2vsb3FXAYBf0k8Aa9ZiNc41RkDM9MXQsdB2ojE5U7Zj4VKzriyuM/bMVZSd2n3RlwrJp1r+uLrTPbCsf2MqycfjqYO7kyvm1J6DHc+j1wzpW5A6MU073VcRjX3y4gAbnOkYvaiioUJZvx4VL6SYgbGnkfQkBoYOo5RSpLejRIXFxgG9qmFwtDmlv254EAN/eOPKyfI+1t4yFeqwwOJ+fPzw7ffnQs8ePlDlyZpdfAMxAHHF2AAYin3ASGFFLRCKVCEAAQhAAAIQgAAEIAABCEAA/yPgLxeqMYw3tnvfAAAAAElFTkSuQmCC">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap">
+<style>
+:root{--navy:#004848;--teal:#1AA993;--teal-d:#00605F;--ink:#0D2626;--mute:#4A5E5C;--bg:#F2F6F5;--line:#C5D3D1}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);font-family:Montserrat,Helvetica,Arial,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent}
+.screen{display:none;min-height:100vh;min-height:100dvh;position:relative;overflow:hidden;flex-direction:column}
+.screen.on{display:flex}
+.wm{position:absolute;inset:0;opacity:.07;pointer-events:none}
+.wm svg{display:block}
+#splash .wm,#login .wm,#ok .wm{opacity:.16}
+h1,h2,.gro{font-family:Montserrat,Arial,sans-serif;font-weight:800}
+/* splash */
+#splash,#login,#ok{background-color:var(--navy)}
+#splash{align-items:center;justify-content:center;color:#fff}
+#splash .logo{width:130px;position:relative}
+#splash .logo svg{width:100%;height:auto;display:block}
+#splash .x{font-family:Montserrat,Arial,sans-serif;font-size:30px;color:var(--teal);margin:18px 0 6px;position:relative}
+#splash .photo{font-family:Montserrat,Arial,sans-serif;font-weight:800;font-size:38px;letter-spacing:8px;position:relative}
+#splash p{margin:22px 0 0;color:rgba(255,255,255,.75);font-size:15px;position:relative}
+/* header */
+.top{position:relative;display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top) + 20px) 22px 14px}
+.brand{display:flex;align-items:center;gap:10px;font-family:Montserrat,Arial,sans-serif;font-weight:700;font-size:20px;color:var(--navy)}
+.brand svg{height:46px;width:auto}
+.brand b{color:var(--teal-d)}
+.avatar{width:40px;height:40px;border-radius:20px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px}
+.hello{position:relative;padding:6px 22px 0}
+.hello p{margin:0;color:var(--mute);font-size:15px}
+.hello h1{margin:4px 0 0;font-size:27px;line-height:1.2}
+.center{position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:0 22px}
+.big{width:100%;height:132px;border:0;border-radius:24px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;gap:16px;font-family:Montserrat,Arial,sans-serif;font-weight:700;font-size:26px;box-shadow:0 12px 28px rgba(0,72,72,.28);cursor:pointer}
+.big:active{transform:scale(.98)}
+.plus{width:52px;height:52px;border-radius:26px;background:var(--teal);color:var(--navy);display:flex;align-items:center;justify-content:center}
+.foot{position:relative;padding:0 22px calc(env(safe-area-inset-bottom) + 30px)}
+.linkbtn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;background:#fff;border:0;border-radius:16px;font:500 15px Montserrat,Arial,sans-serif;color:var(--navy);cursor:pointer}
+/* bar */
+.bar{display:flex;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top) + 14px) 14px 14px;background:var(--navy);color:#fff}
+.bar h1{margin:0;font-size:22px}
+.back{width:44px;height:44px;border:0;background:transparent;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer}
+/* form */
+form{flex:1;padding:18px;display:flex;flex-direction:column;gap:14px}
+.f{display:flex;flex-direction:column;gap:6px}
+.f label{font-size:13px;font-weight:600;color:#3B4858}
+.f label i{color:#B3261E;font-style:normal}
+.f input,.f textarea{height:48px;padding:0 14px;border:1px solid var(--line);border-radius:12px;font:16px Montserrat,Arial,sans-serif;background:#fff;color:var(--ink);width:100%;-webkit-appearance:none}
+.f textarea{height:auto;padding:12px 14px;resize:none}
+.f input:focus,.f textarea:focus{outline:2px solid var(--teal);border-color:var(--teal)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.submit{margin-top:8px;height:56px;border:0;border-radius:16px;background:var(--teal);color:var(--navy);font-family:Montserrat,Arial,sans-serif;font-weight:700;font-size:18px;cursor:pointer}
+.submit:disabled{opacity:.6}
+.err{color:#B3261E;font-size:14px;min-height:18px}
+/* ok */
+#ok{color:#fff;align-items:center;justify-content:center;text-align:center;padding:30px}
+#ok .tick{width:84px;height:84px;border-radius:42px;background:var(--teal);display:flex;align-items:center;justify-content:center;margin-bottom:22px;position:relative}
+#ok h1{margin:0 0 8px;font-size:28px;position:relative}
+#ok p{margin:0 0 30px;color:rgba(255,255,255,.8);position:relative}
+#ok .linkbtn{max-width:320px;justify-content:center;position:relative}
+/* suivi */
+.list{padding:14px;display:flex;flex-direction:column;gap:12px}
+.alert{display:flex;gap:12px;padding:14px 16px;background:#FFF4E3;border:1px solid #F2C27A;border-radius:14px;font-size:14px;line-height:1.4}
+.card{background:#fff;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.card .h{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.card h2{margin:0;font-size:17px}
+.card .c{font-size:12px;color:var(--mute);white-space:nowrap}
+.card .d{font-size:13px;color:var(--mute)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{padding:8px 12px;border-radius:999px;border:0;font:600 12px Montserrat,Arial,sans-serif;min-height:34px}
+.s0{background:#FFE7C2;color:#7A4505}.s1{background:#D3EEE9;color:#004848}.s2{background:#D6EEDD;color:#1D5A2E}
+button.chip{cursor:pointer}
+.empty{text-align:center;color:var(--mute);padding:40px 20px}
+.spin{width:22px;height:22px;border:3px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:r 1s linear infinite;display:inline-block}
+@keyframes r{to{transform:rotate(360deg)}}
+html,body{overscroll-behavior:none}
+#login{color:#fff;justify-content:center;padding:30px 24px calc(env(safe-area-inset-bottom) + 30px)}
+#login .card2{flex:none;position:relative;background:#fff;color:var(--ink);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px}
+#login h1{margin:0;font-size:24px}
+#login p{margin:0;color:var(--mute);font-size:14px}
+#login .logo{width:110px;margin:0 auto 26px;position:relative}
+#login .logo svg{width:100%;height:auto;display:block}
+.avatar{border:0;cursor:pointer}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="sym" viewBox="30 0 160 186"><polygon fill="#1AA993" points="175.69 82.35 175.69 143.87 187.53 137.04 187.57 137.01 187.57 102.93 187.53 102.9 187.57 102.88 187.57 89.21 187.53 89.18 175.69 82.35"/> <polygon fill="#1AA993" points="187.57 48.05 187.53 48.02 163.78 34.31 163.77 34.3 159.2 31.66 157.84 30.88 157.84 30.88 151.93 27.47 151.93 157.59 163.77 150.76 163.81 150.73 163.81 137.06 163.77 137.04 163.81 137.01 163.81 102.93 163.77 102.9 163.81 102.88 163.81 89.21 163.77 89.18 163.81 89.16 163.81 75.49 163.77 75.46 163.81 75.44 163.81 61.77 163.77 61.74 163.81 61.72 163.81 48.05 163.77 48.02 163.79 48 175.69 54.86 175.69 68.63 187.53 75.46 187.57 75.44 187.57 61.77 187.53 61.74 187.57 61.72 187.57 48.05"/> <polygon fill="#1AA993" points="128.16 13.75 128.12 13.72 116.28 6.89 116.24 6.86 104.4 .03 104.4 185.03 116.24 178.2 116.28 178.17 116.28 164.5 116.24 164.48 116.28 164.45 116.28 150.78 116.24 150.76 116.28 150.73 116.28 137.06 116.24 137.04 116.28 137.01 116.28 102.93 116.24 102.9 116.28 102.88 116.28 89.21 116.24 89.18 116.28 89.16 116.28 75.49 116.24 75.46 116.28 75.44 116.28 61.77 116.24 61.74 116.28 61.72 116.28 48.05 116.24 48.02 116.28 48 116.28 34.33 116.24 34.3 116.28 34.27 116.28 20.61 116.24 20.58 116.28 20.55 116.28 20.61 128.12 27.44 128.16 27.41 128.16 171.31 140 164.48 140.04 164.45 140.04 150.78 140 150.76 140.04 150.73 140.04 137.06 140 137.04 140.04 137.01 140.04 102.93 140 102.9 140.04 102.88 140.04 89.21 140 89.18 140.04 89.16 140.04 75.49 140 75.46 140.04 75.44 140.04 61.77 140 61.74 140.04 61.72 140.04 48.05 140 48.02 140.04 48 140.04 34.33 140 34.3 140.04 34.27 140.04 20.61 140 20.58 128.16 13.75"/> <polygon fill="#1AA993" points="80.1 6.84 80.1 6.89 80.06 6.86 68.22 13.69 68.22 13.75 68.18 13.72 56.34 20.55 56.34 164.5 68.18 171.34 68.22 171.31 68.22 171.36 80.06 178.2 80.1 178.17 80.1 178.23 91.94 185.06 91.98 185.03 91.98 171.36 91.94 171.34 80.1 164.5 80.06 164.48 68.22 157.64 68.18 157.62 68.22 157.59 68.22 143.92 68.18 143.9 68.22 143.87 68.22 130.2 68.18 130.18 68.22 130.15 68.22 96.07 68.18 96.04 68.22 96.02 68.22 82.35 68.18 82.32 68.22 82.3 68.22 68.63 68.18 68.6 68.22 68.58 68.22 54.91 68.18 54.88 68.22 54.86 68.22 41.19 68.18 41.16 68.22 41.14 68.22 27.47 68.18 27.44 68.22 27.41 80.06 20.58 80.1 20.55 91.94 13.72 91.98 13.69 91.98 .03 91.94 0 80.1 6.84"/> <polygon fill="#1AA993" points="32.57 34.27 32.57 150.78 44.41 157.62 44.46 157.59 44.46 143.92 44.41 143.9 44.46 143.87 44.46 130.2 44.41 130.18 44.46 130.15 44.46 96.07 44.41 96.04 44.46 96.02 44.46 82.35 44.41 82.32 44.46 82.3 44.46 68.63 44.41 68.6 44.46 68.58 44.46 54.91 44.41 54.88 44.46 54.86 44.46 41.19 44.41 41.16 44.46 41.14 44.46 27.47 44.41 27.44 32.57 34.27"/> </symbol><symbol id="logoW" viewBox="0 0 220.22 339.41"><g><path fill="#FFFFFF" d="M0,246.44H9.66v60.63H0v-60.63Z"/> <path fill="#FFFFFF" d="M65.21,248.8c4.22,1.57,7.9,3.72,11.05,6.44,4.64,4.01,7.76,8.79,9.33,14.34h-5.27c-1.38-4.09-3.86-7.69-7.42-10.78-5.81-5.04-12.87-7.56-21.19-7.56-7.13,0-12.7,2.47-16.69,7.41-3.99,4.94-5.99,10.97-5.99,18.1s2,13.2,5.99,18.12c3.99,4.92,9.56,7.39,16.69,7.39,8.32,0,15.39-2.52,21.19-7.56,3.59-3.09,6.07-6.7,7.42-10.82h5.27c-1.55,5.55-4.66,10.35-9.33,14.38-3.15,2.75-6.83,4.9-11.05,6.46-4.22,1.56-8.72,2.34-13.5,2.34s-9.28-.78-13.5-2.34c-4.22-1.56-7.9-3.71-11.05-6.46-3.18-2.75-5.69-5.97-7.53-9.66s-2.76-7.64-2.76-11.85,.92-8.16,2.76-11.85c1.84-3.69,4.35-6.91,7.53-9.66,3.15-2.72,6.84-4.87,11.05-6.44,4.22-1.57,8.72-2.36,13.5-2.36s9.28,.79,13.5,2.36Z"/> <path fill="#FFFFFF" d="M120.1,246.44h5.64l27.66,60.63h-5.64l-1.7-3.69c-1.82-3.89-4.33-6.68-7.51-8.37s-6.57-2.96-10.18-3.82c-3.61-.86-7.21-1.65-10.8-2.36-3.59-.72-6.7-2.05-9.33-3.99l-10.16,22.24h-11.28l27.66-60.63h5.64Zm2.82,6.18l-12.94,28.38,.25-.56c3.93,2.78,8.75,4.44,14.47,4.98,5.72,.54,10.85,2.16,15.38,4.85l-17.17-37.66Z"/> <path fill="#FFFFFF" d="M167.3,246.44h32.89c4.31,0,8,1.6,11.07,4.81,2.43,2.55,3.88,5.44,4.36,8.67,.47,3.23,.14,6.28-.98,9.12-1.12,2.85-2.94,5.25-5.47,7.19-2.53,1.95-5.56,2.92-9.1,2.92h-.21c5.31,3.01,9.53,7.23,12.67,12.67,3.14,5.44,5.7,10.52,7.69,15.24h-9.7c-3.18-8.39-7.01-15.03-11.49-19.92-4.48-4.9-11.94-7.34-22.39-7.34v-5.45h6.93c1.99,.09,4.44,.11,7.36,.06,2.92-.04,4.97-.06,6.16-.06,3.65,0,6.39-1.2,8.23-3.59,1.84-2.39,2.76-5.02,2.76-7.9s-.91-5.52-2.72-7.94c-1.81-2.42-4.54-3.64-8.19-3.67h-29.86v55.82h-9.66v-60.63h9.66Z"/> </g><g opacity="0.55"> <path fill="#FFFFFF" d="M35.32,326.86c1.04,.65,1.83,1.54,2.35,2.66l-2.33,.91c-.7-1.34-2.01-2.17-3.53-2.17-1.15,0-2.12,.43-2.89,1.26-.77,.84-1.15,1.88-1.15,3.12s.38,2.28,1.15,3.12c.77,.84,1.74,1.24,2.89,1.24,1.52,0,2.83-.82,3.53-2.15l2.33,.91c-.52,1.11-1.31,2.01-2.35,2.67-1.04,.65-2.21,.98-3.51,.98-1.86,0-3.42-.65-4.68-1.93-1.24-1.3-1.86-2.92-1.86-4.85s.63-3.55,1.86-4.83c1.25-1.3,2.81-1.95,4.68-1.95,1.31,0,2.47,.33,3.51,1Z"/> <path fill="#FFFFFF" d="M49.58,327.81c1.26,1.28,1.88,2.9,1.88,4.83s-.63,3.55-1.88,4.85c-1.24,1.28-2.8,1.93-4.68,1.93s-3.42-.65-4.68-1.93c-1.24-1.3-1.86-2.92-1.86-4.85s.63-3.55,1.86-4.83c1.25-1.3,2.81-1.95,4.68-1.95s3.44,.65,4.68,1.95Zm-7.57,7.95c.77,.84,1.74,1.24,2.89,1.24s2.12-.41,2.89-1.24c.77-.84,1.17-1.88,1.17-3.12s-.39-2.28-1.17-3.12c-.77-.84-1.72-1.26-2.89-1.26s-2.12,.43-2.89,1.26c-.77,.84-1.15,1.88-1.15,3.12s.38,2.28,1.15,3.12Z"/> <path fill="#FFFFFF" d="M52.76,339.14v-13h2.13l6.62,8.73v-8.73h2.31v13h-2.13l-6.62-8.71v8.71h-2.31Z"/> <path fill="#FFFFFF" d="M75.17,326.86c1.04,.65,1.83,1.54,2.35,2.66l-2.33,.91c-.7-1.34-2.01-2.17-3.53-2.17-1.15,0-2.12,.43-2.89,1.26-.77,.84-1.15,1.88-1.15,3.12s.38,2.28,1.15,3.12c.77,.84,1.74,1.24,2.89,1.24,1.52,0,2.83-.82,3.53-2.15l2.33,.91c-.52,1.11-1.31,2.01-2.35,2.67-1.04,.65-2.21,.98-3.51,.98-1.86,0-3.42-.65-4.68-1.93-1.24-1.3-1.86-2.92-1.86-4.85s.63-3.55,1.86-4.83c1.25-1.3,2.81-1.95,4.68-1.95,1.31,0,2.47,.33,3.51,1Z"/> <path fill="#FFFFFF" d="M87.98,326.13v2.3h-6.85v2.97h5.86v2.3h-5.86v3.12h6.94v2.3h-9.34v-13h9.25Z"/> <path fill="#FFFFFF" d="M91.67,339.14h-2.4v-13h5.63c1.24,0,2.26,.41,3.08,1.21,.84,.8,1.26,1.8,1.26,2.99s-.41,2.21-1.26,3.01c-.83,.8-1.85,1.21-3.08,1.21h-3.23v4.59Zm0-10.7v3.81h3.23c1.06,0,1.83-.82,1.83-1.91s-.77-1.89-1.83-1.89h-3.23Z"/> <path fill="#FFFFFF" d="M99.55,328.44v-2.3h10.74v2.3h-4.16v10.7h-2.42v-10.7h-4.16Z"/> <path fill="#FFFFFF" d="M116.41,338.22c-.84-.8-1.26-1.76-1.26-2.92,0-1.32,.68-2.45,2.06-3.42-.59-.91-.9-1.82-.9-2.69,0-.97,.3-1.76,.93-2.4,.63-.63,1.43-.95,2.38-.95s1.78,.32,2.42,.93,.97,1.39,.97,2.3c0,1.47-.88,2.4-2.37,3.36l2.08,2.21c.29-.76,.43-1.54,.43-2.38h2.24c0,1.54-.34,2.92-1.02,4.12l2.58,2.73h-3.21l-.88-.93c-.99,.8-2.08,1.21-3.32,1.21s-2.31-.39-3.15-1.19Zm2.55-4.18c-.14-.15-.25-.26-.3-.33-.77,.54-1.17,1.11-1.17,1.69,0,.95,.9,1.73,2.12,1.73,.63,0,1.2-.19,1.72-.58l-2.37-2.51Zm1.86-4.94c0-.54-.48-.97-1.13-.97s-1.09,.45-1.09,1.06c0,.43,.2,.93,.61,1.54,1.08-.59,1.61-1.02,1.61-1.63Z"/> <path fill="#FFFFFF" d="M131.9,339.14v-13h5.09c1.86,0,3.42,.63,4.66,1.88,1.26,1.24,1.88,2.79,1.88,4.62s-.63,3.38-1.88,4.62c-1.24,1.24-2.8,1.88-4.66,1.88h-5.09Zm2.4-10.7v8.39h2.69c1.15,0,2.12-.41,2.89-1.21,.77-.82,1.17-1.82,1.17-2.99s-.39-2.19-1.17-2.99c-.77-.8-1.74-1.21-2.89-1.21h-2.69Z"/> <path fill="#FFFFFF" d="M154.08,326.13v2.3h-6.85v2.97h5.86v2.3h-5.86v3.12h6.94v2.3h-9.34v-13h9.25Z"/> <path fill="#FFFFFF" d="M161.7,329.5c-.2-.69-1.02-1.26-2.03-1.26-1.06,0-1.9,.61-1.9,1.37,0,.48,.38,.89,1.15,1.23,.34,.15,1.02,.37,2.06,.69,.77,.22,1.09,.3,1.86,.72,.38,.2,.68,.45,.9,.69,.43,.46,.84,1.34,.84,2.36,0,1.24-.43,2.25-1.31,3.01-.86,.74-1.97,1.11-3.35,1.11-1.24,0-2.31-.3-3.19-.89-.88-.61-1.45-1.36-1.72-2.27l2.4-.74c.2,.82,1.2,1.5,2.51,1.5s2.26-.61,2.26-1.5c0-.37-.23-.71-.45-.91-.11-.09-.29-.2-.52-.32-.45-.22-.52-.22-1-.39-1.51-.46-2.51-.84-3.03-1.11-1.2-.67-1.81-1.67-1.81-2.99,0-1.17,.4-2.12,1.18-2.84,.81-.72,1.83-1.1,3.08-1.1,1.09,0,2.06,.28,2.87,.84,.81,.54,1.34,1.24,1.6,2.08l-2.4,.72Z"/> <path fill="#FFFFFF" d="M165.89,339.14v-13h2.4v13h-2.4Z"/> <path fill="#FFFFFF" d="M179.78,326.86c1.06,.65,1.85,1.54,2.38,2.66l-2.33,.91c-.72-1.34-2.03-2.17-3.6-2.17-1.18,0-2.17,.43-2.96,1.26-.79,.84-1.18,1.88-1.18,3.12s.38,2.28,1.15,3.12c.77,.84,1.7,1.24,2.81,1.24,.84,0,1.63-.26,2.33-.76,.7-.5,1.18-1.17,1.45-2.01h-3.96v-2.27h6.69c.02,.28,.04,.48,.04,.65,0,1.91-.63,3.53-1.86,4.85-1.24,1.3-2.8,1.95-4.64,1.95s-3.41-.65-4.64-1.93c-1.24-1.3-1.86-2.92-1.86-4.85s.63-3.55,1.9-4.83c1.27-1.3,2.85-1.95,4.75-1.95,1.31,0,2.49,.33,3.55,1Z"/> <path fill="#FFFFFF" d="M183.89,339.14v-13h2.13l6.62,8.73v-8.73h2.31v13h-2.13l-6.62-8.71v8.71h-2.31Z"/> </g><use href="#sym" x="30" y="0" width="160" height="186"/></symbol><symbol id="logoD" viewBox="0 0 220.22 339.41"><g><path fill="#004848" d="M0,246.44H9.66v60.63H0v-60.63Z"/> <path fill="#004848" d="M65.21,248.8c4.22,1.57,7.9,3.72,11.05,6.44,4.64,4.01,7.76,8.79,9.33,14.34h-5.27c-1.38-4.09-3.86-7.69-7.42-10.78-5.81-5.04-12.87-7.56-21.19-7.56-7.13,0-12.7,2.47-16.69,7.41-3.99,4.94-5.99,10.97-5.99,18.1s2,13.2,5.99,18.12c3.99,4.92,9.56,7.39,16.69,7.39,8.32,0,15.39-2.52,21.19-7.56,3.59-3.09,6.07-6.7,7.42-10.82h5.27c-1.55,5.55-4.66,10.35-9.33,14.38-3.15,2.75-6.83,4.9-11.05,6.46-4.22,1.56-8.72,2.34-13.5,2.34s-9.28-.78-13.5-2.34c-4.22-1.56-7.9-3.71-11.05-6.46-3.18-2.75-5.69-5.97-7.53-9.66s-2.76-7.64-2.76-11.85,.92-8.16,2.76-11.85c1.84-3.69,4.35-6.91,7.53-9.66,3.15-2.72,6.84-4.87,11.05-6.44,4.22-1.57,8.72-2.36,13.5-2.36s9.28,.79,13.5,2.36Z"/> <path fill="#004848" d="M120.1,246.44h5.64l27.66,60.63h-5.64l-1.7-3.69c-1.82-3.89-4.33-6.68-7.51-8.37s-6.57-2.96-10.18-3.82c-3.61-.86-7.21-1.65-10.8-2.36-3.59-.72-6.7-2.05-9.33-3.99l-10.16,22.24h-11.28l27.66-60.63h5.64Zm2.82,6.18l-12.94,28.38,.25-.56c3.93,2.78,8.75,4.44,14.47,4.98,5.72,.54,10.85,2.16,15.38,4.85l-17.17-37.66Z"/> <path fill="#004848" d="M167.3,246.44h32.89c4.31,0,8,1.6,11.07,4.81,2.43,2.55,3.88,5.44,4.36,8.67,.47,3.23,.14,6.28-.98,9.12-1.12,2.85-2.94,5.25-5.47,7.19-2.53,1.95-5.56,2.92-9.1,2.92h-.21c5.31,3.01,9.53,7.23,12.67,12.67,3.14,5.44,5.7,10.52,7.69,15.24h-9.7c-3.18-8.39-7.01-15.03-11.49-19.92-4.48-4.9-11.94-7.34-22.39-7.34v-5.45h6.93c1.99,.09,4.44,.11,7.36,.06,2.92-.04,4.97-.06,6.16-.06,3.65,0,6.39-1.2,8.23-3.59,1.84-2.39,2.76-5.02,2.76-7.9s-.91-5.52-2.72-7.94c-1.81-2.42-4.54-3.64-8.19-3.67h-29.86v55.82h-9.66v-60.63h9.66Z"/> </g><g opacity="0.55"> <path fill="#004848" d="M35.32,326.86c1.04,.65,1.83,1.54,2.35,2.66l-2.33,.91c-.7-1.34-2.01-2.17-3.53-2.17-1.15,0-2.12,.43-2.89,1.26-.77,.84-1.15,1.88-1.15,3.12s.38,2.28,1.15,3.12c.77,.84,1.74,1.24,2.89,1.24,1.52,0,2.83-.82,3.53-2.15l2.33,.91c-.52,1.11-1.31,2.01-2.35,2.67-1.04,.65-2.21,.98-3.51,.98-1.86,0-3.42-.65-4.68-1.93-1.24-1.3-1.86-2.92-1.86-4.85s.63-3.55,1.86-4.83c1.25-1.3,2.81-1.95,4.68-1.95,1.31,0,2.47,.33,3.51,1Z"/> <path fill="#004848" d="M49.58,327.81c1.26,1.28,1.88,2.9,1.88,4.83s-.63,3.55-1.88,4.85c-1.24,1.28-2.8,1.93-4.68,1.93s-3.42-.65-4.68-1.93c-1.24-1.3-1.86-2.92-1.86-4.85s.63-3.55,1.86-4.83c1.25-1.3,2.81-1.95,4.68-1.95s3.44,.65,4.68,1.95Zm-7.57,7.95c.77,.84,1.74,1.24,2.89,1.24s2.12-.41,2.89-1.24c.77-.84,1.17-1.88,1.17-3.12s-.39-2.28-1.17-3.12c-.77-.84-1.72-1.26-2.89-1.26s-2.12,.43-2.89,1.26c-.77,.84-1.15,1.88-1.15,3.12s.38,2.28,1.15,3.12Z"/> <path fill="#004848" d="M52.76,339.14v-13h2.13l6.62,8.73v-8.73h2.31v13h-2.13l-6.62-8.71v8.71h-2.31Z"/> <path fill="#004848" d="M75.17,326.86c1.04,.65,1.83,1.54,2.35,2.66l-2.33,.91c-.7-1.34-2.01-2.17-3.53-2.17-1.15,0-2.12,.43-2.89,1.26-.77,.84-1.15,1.88-1.15,3.12s.38,2.28,1.15,3.12c.77,.84,1.74,1.24,2.89,1.24,1.52,0,2.83-.82,3.53-2.15l2.33,.91c-.52,1.11-1.31,2.01-2.35,2.67-1.04,.65-2.21,.98-3.51,.98-1.86,0-3.42-.65-4.68-1.93-1.24-1.3-1.86-2.92-1.86-4.85s.63-3.55,1.86-4.83c1.25-1.3,2.81-1.95,4.68-1.95,1.31,0,2.47,.33,3.51,1Z"/> <path fill="#004848" d="M87.98,326.13v2.3h-6.85v2.97h5.86v2.3h-5.86v3.12h6.94v2.3h-9.34v-13h9.25Z"/> <path fill="#004848" d="M91.67,339.14h-2.4v-13h5.63c1.24,0,2.26,.41,3.08,1.21,.84,.8,1.26,1.8,1.26,2.99s-.41,2.21-1.26,3.01c-.83,.8-1.85,1.21-3.08,1.21h-3.23v4.59Zm0-10.7v3.81h3.23c1.06,0,1.83-.82,1.83-1.91s-.77-1.89-1.83-1.89h-3.23Z"/> <path fill="#004848" d="M99.55,328.44v-2.3h10.74v2.3h-4.16v10.7h-2.42v-10.7h-4.16Z"/> <path fill="#004848" d="M116.41,338.22c-.84-.8-1.26-1.76-1.26-2.92,0-1.32,.68-2.45,2.06-3.42-.59-.91-.9-1.82-.9-2.69,0-.97,.3-1.76,.93-2.4,.63-.63,1.43-.95,2.38-.95s1.78,.32,2.42,.93,.97,1.39,.97,2.3c0,1.47-.88,2.4-2.37,3.36l2.08,2.21c.29-.76,.43-1.54,.43-2.38h2.24c0,1.54-.34,2.92-1.02,4.12l2.58,2.73h-3.21l-.88-.93c-.99,.8-2.08,1.21-3.32,1.21s-2.31-.39-3.15-1.19Zm2.55-4.18c-.14-.15-.25-.26-.3-.33-.77,.54-1.17,1.11-1.17,1.69,0,.95,.9,1.73,2.12,1.73,.63,0,1.2-.19,1.72-.58l-2.37-2.51Zm1.86-4.94c0-.54-.48-.97-1.13-.97s-1.09,.45-1.09,1.06c0,.43,.2,.93,.61,1.54,1.08-.59,1.61-1.02,1.61-1.63Z"/> <path fill="#004848" d="M131.9,339.14v-13h5.09c1.86,0,3.42,.63,4.66,1.88,1.26,1.24,1.88,2.79,1.88,4.62s-.63,3.38-1.88,4.62c-1.24,1.24-2.8,1.88-4.66,1.88h-5.09Zm2.4-10.7v8.39h2.69c1.15,0,2.12-.41,2.89-1.21,.77-.82,1.17-1.82,1.17-2.99s-.39-2.19-1.17-2.99c-.77-.8-1.74-1.21-2.89-1.21h-2.69Z"/> <path fill="#004848" d="M154.08,326.13v2.3h-6.85v2.97h5.86v2.3h-5.86v3.12h6.94v2.3h-9.34v-13h9.25Z"/> <path fill="#004848" d="M161.7,329.5c-.2-.69-1.02-1.26-2.03-1.26-1.06,0-1.9,.61-1.9,1.37,0,.48,.38,.89,1.15,1.23,.34,.15,1.02,.37,2.06,.69,.77,.22,1.09,.3,1.86,.72,.38,.2,.68,.45,.9,.69,.43,.46,.84,1.34,.84,2.36,0,1.24-.43,2.25-1.31,3.01-.86,.74-1.97,1.11-3.35,1.11-1.24,0-2.31-.3-3.19-.89-.88-.61-1.45-1.36-1.72-2.27l2.4-.74c.2,.82,1.2,1.5,2.51,1.5s2.26-.61,2.26-1.5c0-.37-.23-.71-.45-.91-.11-.09-.29-.2-.52-.32-.45-.22-.52-.22-1-.39-1.51-.46-2.51-.84-3.03-1.11-1.2-.67-1.81-1.67-1.81-2.99,0-1.17,.4-2.12,1.18-2.84,.81-.72,1.83-1.1,3.08-1.1,1.09,0,2.06,.28,2.87,.84,.81,.54,1.34,1.24,1.6,2.08l-2.4,.72Z"/> <path fill="#004848" d="M165.89,339.14v-13h2.4v13h-2.4Z"/> <path fill="#004848" d="M179.78,326.86c1.06,.65,1.85,1.54,2.38,2.66l-2.33,.91c-.72-1.34-2.03-2.17-3.6-2.17-1.18,0-2.17,.43-2.96,1.26-.79,.84-1.18,1.88-1.18,3.12s.38,2.28,1.15,3.12c.77,.84,1.7,1.24,2.81,1.24,.84,0,1.63-.26,2.33-.76,.7-.5,1.18-1.17,1.45-2.01h-3.96v-2.27h6.69c.02,.28,.04,.48,.04,.65,0,1.91-.63,3.53-1.86,4.85-1.24,1.3-2.8,1.95-4.64,1.95s-3.41-.65-4.64-1.93c-1.24-1.3-1.86-2.92-1.86-4.85s.63-3.55,1.9-4.83c1.27-1.3,2.85-1.95,4.75-1.95,1.31,0,2.49,.33,3.55,1Z"/> <path fill="#004848" d="M183.89,339.14v-13h2.13l6.62,8.73v-8.73h2.31v13h-2.13l-6.62-8.71v8.71h-2.31Z"/> </g><use href="#sym" x="30" y="0" width="160" height="186"/></symbol><pattern id="motif" patternUnits="userSpaceOnUse" width="92" height="100" patternTransform="scale(1.9)"><use href="#sym" x="0" y="0" width="80" height="93"/><use href="#sym" x="46" y="50" width="80" height="93"/><use href="#sym" x="-46" y="50" width="80" height="93"/><use href="#sym" x="0" y="100" width="80" height="93"/><use href="#sym" x="46" y="-50" width="80" height="93"/><use href="#sym" x="-46" y="-50" width="80" height="93"/></pattern></svg>
+
+<section class="screen on" id="splash">
+  <div class="wm" aria-hidden="true"><svg width="100%" height="100%"><rect width="100%" height="100%" fill="url(#motif)"/></svg></div>
+  <div class="logo" role="img" aria-label="ICAR Concept &amp; Design"><svg viewBox="0 0 220.22 339.41"><use href="#logoW"/></svg></div>
+  <div class="x" aria-hidden="true">×</div>
+  <div class="photo">PHOTO</div>
+  <p>Suivi des chantiers &amp; du photographe</p>
+</section>
+
+
+<section class="screen" id="login">
+  <div class="wm" aria-hidden="true"><svg width="100%" height="100%"><rect width="100%" height="100%" fill="url(#motif)"/></svg></div>
+  <div class="logo" role="img" aria-label="ICAR Concept &amp; Design"><svg viewBox="0 0 220.22 339.41"><use href="#logoW"/></svg></div>
+  <form class="card2" onsubmit="connexion(event)">
+    <h1>Bienvenue</h1>
+    <p>Première ouverture sur ce téléphone : indique ton nom et le code ICAR.</p>
+    <div class="f"><label for="l-nom">Ton prénom et nom <i>*</i></label><input id="l-nom" required autocomplete="name"></div>
+    <div class="f"><label for="l-code">Code ICAR <i>*</i></label><input id="l-code" required autocapitalize="characters" autocomplete="off"></div>
+    <div class="err" id="l-err" role="alert"></div>
+    <button class="submit" id="l-btn" type="submit">Entrer</button>
+  </form>
+</section>
+
+<section class="screen" id="home">
+  <div class="wm" aria-hidden="true"><svg width="100%" height="100%"><rect width="100%" height="100%" fill="url(#motif)"/></svg></div>
+  <header class="top">
+    <div class="brand"><svg role="img" aria-label="ICAR Concept &amp; Design" viewBox="0 0 220.22 339.41"><use href="#logoD"/></svg><span><b>×</b> PHOTO</span></div>
+    <button class="avatar" id="avatar" type="button" aria-label="Changer d'utilisateur" onclick="deconnexion()">·</button>
+  </header>
+  <div class="hello"><p id="bonjour">Bonjour,</p><h1>Un nouveau chantier à déclarer ?</h1></div>
+  <div class="center">
+    <button class="big" type="button" onclick="go('form')">
+      <span class="plus"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span>
+      Créer chantier
+    </button>
+  </div>
+  <div class="foot"><button class="linkbtn" type="button" onclick="ouvrirSuivi()"><span id="lbl-suivi">Mes chantiers déclarés</span><span aria-hidden="true">›</span></button></div>
+</section>
+
+<section class="screen" id="form">
+  <div class="bar">
+    <button class="back" type="button" aria-label="Retour" onclick="go('home')"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <h1>Nouveau chantier</h1>
+  </div>
+  <form id="f" onsubmit="envoyer(event)">
+    <div class="f"><label for="nom">Nom du chantier <i>*</i></label><input id="nom" required placeholder="Ex. Les Ulysses"></div>
+    <div class="f"><label for="client">Client</label><input id="client"></div>
+    <div class="f"><label for="adresse">Adresse du chantier <i>*</i></label><input id="adresse" required placeholder="N°, rue"></div>
+    <div class="f"><label for="ville">Ville</label><input id="ville"></div>
+    <div class="f"><label for="conducteur">Conducteur de travaux <i>*</i></label><input id="conducteur" required></div>
+    <div class="row2">
+      <div class="f"><label for="debut">Début <i>*</i></label><input id="debut" type="date" required></div>
+      <div class="f"><label for="fin">Fin prévue <i>*</i></label><input id="fin" type="date" required></div>
+    </div>
+    <div class="row2">
+      <div class="f"><label for="contact">Contact sur place</label><input id="contact"></div>
+      <div class="f"><label for="tel">Téléphone</label><input id="tel" type="tel" inputmode="tel"></div>
+    </div>
+    <div class="f"><label for="remarques">Remarques (accès, code, étage…)</label><textarea id="remarques" rows="3"></textarea></div>
+    <div class="err" id="err" role="alert"></div>
+    <button class="submit" id="btn" type="submit">Enregistrer le chantier</button>
+  </form>
+</section>
+
+<section class="screen" id="ok">
+  <div class="wm" aria-hidden="true"><svg width="100%" height="100%"><rect width="100%" height="100%" fill="url(#motif)"/></svg></div>
+  <div class="tick"><svg aria-hidden="true" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+  <h1>Chantier enregistré</h1>
+  <p>Merci ! Le suivi photographe est prévenu.</p>
+  <button class="linkbtn" type="button" onclick="go('home')">Retour à l'accueil</button>
+</section>
+
+<section class="screen" id="suivi">
+  <div class="bar">
+    <button class="back" type="button" aria-label="Retour" onclick="go('home')"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <h1 id="titre-suivi">Mes chantiers</h1>
+  </div>
+  <div class="list" id="list"><div class="empty">Chargement…</div></div>
+</section>
+
+<script>
+var API = 'https://script.google.com/macros/s/AKfycby37lrHAO8eUWifxtvZXGT8t_JXg8gUScN4UOdj7J7F8EtwWA0rMTTwVfII1NN5N9es/exec';
+var STATUTS = ['À contacter','Contacté','Fait'];
+var S = {nom: localStorage.getItem('icar_nom')||'', code: localStorage.getItem('icar_code')||'', role: localStorage.getItem('icar_role')||''};
+function go(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('on', s.id===id)}); window.scrollTo(0,0);}
+function api(action, payload){
+  var body = Object.assign({action: action, code: S.code, nom: S.nom}, payload||{});
+  return fetch(API, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(body)})
+    .then(function(r){return r.json();})
+    .then(function(j){ if(!j.ok) throw new Error(j.error||'Erreur'); return j.data; });
+}
+function initUI(){
+  var ini = (S.nom||'?').split(/\s+/).map(function(x){return x.charAt(0)}).join('').slice(0,2).toUpperCase();
+  document.getElementById('avatar').textContent = ini;
+  document.getElementById('bonjour').textContent = 'Bonjour ' + (S.nom.split(' ')[0]||'') + ',';
+  document.getElementById('conducteur').value = S.nom;
+  var admin = S.role==='admin';
+  document.getElementById('lbl-suivi').textContent = admin ? 'Suivi photographe' : 'Mes chantiers déclarés';
+  document.getElementById('titre-suivi').textContent = admin ? 'Suivi photographe' : 'Mes chantiers';
+}
+setTimeout(function(){ if(S.code && S.nom){ initUI(); go('home'); } else go('login'); }, 1400);
+
+function connexion(e){
+  e.preventDefault();
+  var err=document.getElementById('l-err'), btn=document.getElementById('l-btn');
+  err.textContent=''; btn.disabled=true; btn.innerHTML='<span class="spin"></span>';
+  S.nom=document.getElementById('l-nom').value.trim(); S.code=document.getElementById('l-code').value.trim().toUpperCase();
+  api('login').then(function(d){
+    S.role=d.role;
+    localStorage.setItem('icar_nom',S.nom); localStorage.setItem('icar_code',S.code); localStorage.setItem('icar_role',S.role);
+    btn.disabled=false; btn.textContent='Entrer'; initUI(); go('home');
+  }).catch(function(x){ btn.disabled=false; btn.textContent='Entrer'; err.textContent=x.message; });
+}
+function deconnexion(){
+  if(!confirm('Changer d\'utilisateur sur ce téléphone ?')) return;
+  ['icar_nom','icar_code','icar_role'].forEach(function(k){localStorage.removeItem(k)});
+  S={nom:'',code:'',role:''}; go('login');
+}
+
+function v(id){return document.getElementById(id).value.trim();}
+function envoyer(e){
+  e.preventDefault();
+  var err=document.getElementById('err'), btn=document.getElementById('btn');
+  err.textContent='';
+  var d={nom:v('nom'),client:v('client'),adresse:v('adresse'),ville:v('ville'),conducteur:v('conducteur'),debut:v('debut'),fin:v('fin'),contact:v('contact'),tel:v('tel'),remarques:v('remarques')};
+  if(d.fin < d.debut){err.textContent='La date de fin est avant la date de début.';return;}
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span>';
+  api('create',{data:d}).then(function(){
+    btn.disabled=false; btn.textContent='Enregistrer le chantier';
+    document.getElementById('f').reset(); document.getElementById('conducteur').value=S.nom;
+    go('ok');
+  }).catch(function(x){
+    btn.disabled=false; btn.textContent='Enregistrer le chantier';
+    err.textContent = x.message || 'Erreur, réessaie.';
+  });
+}
+
+function el(tag, cls, txt){var e=document.createElement(tag); if(cls) e.className=cls; if(txt!=null) e.textContent=txt; return e;}
+function chip(c, champ, label){
+  var admin = S.role==='admin';
+  var i = Math.max(0, STATUTS.indexOf(champ==='debut'?c.photoDebut:c.photoFin));
+  var b = el(admin?'button':'span', 'chip s'+i, label+' : '+STATUTS[i].toLowerCase());
+  if (admin){
+    b.type='button';
+    b.onclick=function(){
+      var n=(i+1)%STATUTS.length; b.disabled=true;
+      api('status',{id:c.id, champ:champ, valeur:STATUTS[n]}).then(function(){
+        if(champ==='debut') c.photoDebut=STATUTS[n]; else c.photoFin=STATUTS[n];
+        b.replaceWith(chip(c, champ, label));
+      }).catch(function(x){b.disabled=false; alert(x.message);});
+    };
+  }
+  return b;
+}
+function ouvrirSuivi(){
+  go('suivi');
+  var L=document.getElementById('list'); L.innerHTML='<div class="empty">Chargement…</div>';
+  api('list').then(function(rows){
+    L.innerHTML='';
+    if(!rows.length){L.appendChild(el('div','empty','Aucun chantier pour l\'instant.'));return;}
+    var today=new Date(); today.setHours(0,0,0,0);
+    var bientot=rows.filter(function(c){var j=(c.debutTs-today.getTime())/86400000; return c.photoDebut==='À contacter' && j>=0 && j<=7;});
+    if(S.role==='admin' && bientot.length){
+      var a=el('div','alert'); a.setAttribute('role','status');
+      a.innerHTML='<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A5A06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>';
+      var t=el('div'); t.appendChild(el('strong',null,'Appeler le photographe')); t.appendChild(document.createElement('br'));
+      t.appendChild(document.createTextNode(bientot.map(function(c){return c.nom+' ('+c.debut+')'}).join(', ')+' démarre bientôt'));
+      a.appendChild(t); L.appendChild(a);
+    }
+    rows.forEach(function(c){
+      var k=el('article','card'), h=el('div','h');
+      h.appendChild(el('h2',null,c.nom)); h.appendChild(el('span','c',c.conducteur)); k.appendChild(h);
+      k.appendChild(el('div','d',[c.adresse,c.ville].filter(Boolean).join(', ')));
+      k.appendChild(el('div','d','Début '+c.debut+' · Fin '+c.fin));
+      var ch=el('div','chips'); ch.appendChild(chip(c,'debut','Début')); ch.appendChild(chip(c,'fin','Fin')); k.appendChild(ch);
+      L.appendChild(k);
+    });
+  }).catch(function(x){L.innerHTML=''; L.appendChild(el('div','empty','Erreur : '+x.message));});
+}
+if('serviceWorker' in navigator){ window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
+</script>
+</body>
+</html>
