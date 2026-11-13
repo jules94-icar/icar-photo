@@ -87,6 +87,8 @@ button.chip{cursor:pointer}
 .f input[type=date]::-webkit-date-and-time-value{text-align:left}
 .f input[type=date]::-webkit-calendar-picker-indicator{opacity:.6}
 .card.edit{cursor:pointer}
+.card .acts{display:flex;justify-content:space-between;align-items:center}
+.card .del{font-size:13px;font-weight:600;color:#B3261E;background:none;border:0;padding:6px 0;font-family:inherit;cursor:pointer}
 .card .mod{font-size:13px;font-weight:600;color:var(--teal-d);align-self:flex-end;background:none;border:0;padding:6px 0;font-family:inherit;cursor:pointer}
 button,input,a{touch-action:manipulation}
 html,body{overscroll-behavior:none}
@@ -281,7 +283,9 @@ function ouvrirSuivi(){
       k.appendChild(el('div','d',[c.adresse,c.ville].filter(Boolean).join(', ')));
       k.appendChild(el('div','d','Début '+c.debut+' · Fin '+c.fin));
       var ch=el('div','chips'); ch.appendChild(chip(c,'debut','Début')); ch.appendChild(chip(c,'fin','Fin')); k.appendChild(ch);
-      var mb=el('button','mod','Modifier ›'); mb.type='button'; mb.onclick=function(){ modifier(c); }; k.appendChild(mb);
+      var acts=el('div','acts'); acts.appendChild(el('span'));
+      if(S.role==='admin'){ var db=el('button','del','Supprimer'); db.type='button'; db.onclick=function(){ if(!confirm('Supprimer définitivement le chantier « '+c.nom+' » ?')) return; db.disabled=true; api('delete',{id:c.id}).then(function(){ k.remove(); }).catch(function(x){ db.disabled=false; alert(x.message); }); }; acts.replaceChild(db, acts.firstChild); }
+      var mb=el('button','mod','Modifier ›'); mb.type='button'; mb.onclick=function(){ modifier(c); }; acts.appendChild(mb); k.appendChild(acts);
       L.appendChild(k);
     });
   }).catch(function(x){L.innerHTML=''; L.appendChild(el('div','empty','Erreur : '+x.message));});
