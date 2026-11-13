@@ -56,6 +56,10 @@ form{flex:1;padding:18px;display:flex;flex-direction:column;gap:14px}
 .f label{font-size:13px;font-weight:600;color:#3B4858}
 .f label i{color:#B3261E;font-style:normal}
 .f input,.f textarea{height:48px;padding:0 14px;border:1px solid var(--line);border-radius:12px;font:16px Montserrat,Arial,sans-serif;background:#fff;color:var(--ink);width:100%;-webkit-appearance:none}
+.f select{height:48px;padding:0 14px;border:1px solid var(--line);border-radius:12px;font:16px Montserrat,Arial,sans-serif;background:#fff;color:var(--ink);width:100%}
+.tabs{display:flex;gap:6px;background:#E3ECEA;padding:4px;border-radius:14px}
+.tab{flex:1;border:0;background:transparent;padding:10px 4px;border-radius:10px;font:600 13px Montserrat,Arial,sans-serif;color:var(--mute);cursor:pointer;min-height:40px}
+.tab.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(0,0,0,.08)}
 .f textarea{height:auto;padding:12px 14px;resize:none}
 .f input:focus,.f textarea:focus{outline:2px solid var(--teal);border-color:var(--teal)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -118,11 +122,11 @@ html,body{overscroll-behavior:none}
   <div class="logo" role="img" aria-label="ICAR Concept &amp; Design"><svg viewBox="0 0 220.22 339.41"><use href="#logoW"/></svg></div>
   <form class="card2" onsubmit="connexion(event)">
     <h1>Bienvenue</h1>
-    <p>Première ouverture sur ce téléphone : indique ton nom et le code ICAR.</p>
-    <div class="f"><label for="l-nom">Ton prénom et nom <i>*</i></label><input id="l-nom" required autocomplete="name"></div>
+    <p>Première ouverture sur ce téléphone : entre le code ICAR, puis choisis ton nom.</p>
     <div class="f"><label for="l-code">Code ICAR <i>*</i></label><input id="l-code" required autocapitalize="characters" autocomplete="off"></div>
+    <div class="f" id="l-nomf" style="display:none"><label for="l-nom">Qui es-tu ? <i>*</i></label><select id="l-nom"></select></div>
     <div class="err" id="l-err" role="alert"></div>
-    <button class="submit" id="l-btn" type="submit">Entrer</button>
+    <button class="submit" id="l-btn" type="submit">Continuer</button>
   </form>
 </section>
 
@@ -211,9 +215,20 @@ setTimeout(function(){ if(S.code && S.nom){ initUI(); go('home'); } else go('log
 
 function connexion(e){
   e.preventDefault();
-  var err=document.getElementById('l-err'), btn=document.getElementById('l-btn');
-  err.textContent=''; btn.disabled=true; btn.innerHTML='<span class="spin"></span>';
-  S.nom=document.getElementById('l-nom').value.trim(); S.code=document.getElementById('l-code').value.trim().toUpperCase();
+  var err=document.getElementById('l-err'), btn=document.getElementById('l-btn'), sel=document.getElementById('l-nom'), nf=document.getElementById('l-nomf');
+  err.textContent='';
+  var code=document.getElementById('l-code').value.trim().toUpperCase();
+  if(nf.style.display==='none' || S.code!==code){
+    S.code=code; S.nom=''; btn.disabled=true; btn.innerHTML='<span class="spin"></span>';
+    api('noms').then(function(list){
+      sel.innerHTML=''; var o0=el('option',null,'Choisis ton nom…'); o0.value=''; sel.appendChild(o0);
+      list.forEach(function(n){ var o=el('option',null,n); o.value=n; sel.appendChild(o); });
+      nf.style.display=''; btn.disabled=false; btn.textContent='Entrer';
+    }).catch(function(x){ btn.disabled=false; btn.textContent='Continuer'; err.textContent=x.message; });
+    return;
+  }
+  if(!sel.value){ err.textContent='Choisis ton nom dans la liste.'; return; }
+  S.nom=sel.value; btn.disabled=true; btn.innerHTML='<span class="spin"></span>';
   api('login').then(function(d){
     S.role=d.role;
     localStorage.setItem('icar_nom',S.nom); localStorage.setItem('icar_code',S.code); localStorage.setItem('icar_role',S.role);
@@ -223,7 +238,7 @@ function connexion(e){
 function deconnexion(){
   if(!confirm('Changer d\'utilisateur sur ce téléphone ?')) return;
   ['icar_nom','icar_code','icar_role'].forEach(function(k){localStorage.removeItem(k)});
-  S={nom:'',code:'',role:''}; go('login');
+  S={nom:'',code:'',role:''}; document.getElementById('l-nomf').style.display='none'; document.getElementById('l-btn').textContent='Continuer'; document.getElementById('l-code').value=''; go('login');
 }
 
 function v(id){return document.getElementById(id).value.trim();}
@@ -256,39 +271,51 @@ function chip(c, champ, label){
       var n=(i+1)%STATUTS.length; b.disabled=true;
       api('status',{id:c.id, champ:champ, valeur:STATUTS[n]}).then(function(){
         if(champ==='debut') c.photoDebut=STATUTS[n]; else c.photoFin=STATUTS[n];
-        b.replaceWith(chip(c, champ, label));
+        if(admin){ afficher(); } else b.replaceWith(chip(c, champ, label));
       }).catch(function(x){b.disabled=false; alert(x.message);});
     };
   }
   return b;
 }
+var ROWS=[], TAB='appel';
+function categorie(c){
+  var t=new Date(); t.setHours(0,0,0,0);
+  var fin=c.finIso?new Date(c.finIso+'T00:00:00'):null;
+  if(c.photoDebut==='Fait' && c.photoFin==='Fait') return 'fini';
+  if(fin && fin<t && c.photoFin==='Fait') return 'fini';
+  if(c.photoDebut==='À contacter' || (c.photoFin==='À contacter' && fin && (fin-t)/86400000<=14)) return 'appel';
+  return 'cours';
+}
 function ouvrirSuivi(){
   go('suivi');
   var L=document.getElementById('list'); L.innerHTML='<div class="empty">Chargement…</div>';
-  api('list').then(function(rows){
-    L.innerHTML='';
-    if(!rows.length){L.appendChild(el('div','empty','Aucun chantier pour l\'instant.'));return;}
-    var today=new Date(); today.setHours(0,0,0,0);
-    var bientot=rows.filter(function(c){var j=(c.debutTs-today.getTime())/86400000; return c.photoDebut==='À contacter' && j>=0 && j<=7;});
-    if(S.role==='admin' && bientot.length){
-      var a=el('div','alert'); a.setAttribute('role','status');
-      a.innerHTML='<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#9A5A06" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>';
-      var t=el('div'); t.appendChild(el('strong',null,'Appeler le photographe')); t.appendChild(document.createElement('br'));
-      t.appendChild(document.createTextNode(bientot.map(function(c){return c.nom+' ('+c.debut+')'}).join(', ')+' démarre bientôt'));
-      a.appendChild(t); L.appendChild(a);
-    }
-    rows.forEach(function(c){
-      var k=el('article','card'), h=el('div','h');
-      h.appendChild(el('h2',null,c.nom)); h.appendChild(el('span','c',c.conducteur)); k.appendChild(h);
-      k.appendChild(el('div','d',[c.adresse,c.ville].filter(Boolean).join(', ')));
-      k.appendChild(el('div','d','Début '+c.debut+' · Fin '+c.fin));
-      var ch=el('div','chips'); ch.appendChild(chip(c,'debut','Début')); ch.appendChild(chip(c,'fin','Fin')); k.appendChild(ch);
-      var acts=el('div','acts'); acts.appendChild(el('span'));
-      if(S.role==='admin'){ var db=el('button','del','Supprimer'); db.type='button'; db.onclick=function(){ if(!confirm('Supprimer définitivement le chantier « '+c.nom+' » ?')) return; db.disabled=true; api('delete',{id:c.id}).then(function(){ k.remove(); }).catch(function(x){ db.disabled=false; alert(x.message); }); }; acts.replaceChild(db, acts.firstChild); }
-      var mb=el('button','mod','Modifier ›'); mb.type='button'; mb.onclick=function(){ modifier(c); }; acts.appendChild(mb); k.appendChild(acts);
-      L.appendChild(k);
-    });
-  }).catch(function(x){L.innerHTML=''; L.appendChild(el('div','empty','Erreur : '+x.message));});
+  api('list').then(function(rows){ ROWS=rows; afficher(); })
+  .catch(function(x){L.innerHTML=''; L.appendChild(el('div','empty','Erreur : '+x.message));});
+}
+function afficher(){
+  var L=document.getElementById('list'); L.innerHTML='';
+  var admin=S.role==='admin', rows=ROWS;
+  if(admin){
+    var noms={appel:'À appeler',cours:'En cours',fini:'Terminés'}, n={appel:0,cours:0,fini:0};
+    ROWS.forEach(function(c){ n[categorie(c)]++; });
+    var tb=el('div','tabs'); tb.setAttribute('role','tablist');
+    ['appel','cours','fini'].forEach(function(k){ var b=el('button','tab'+(TAB===k?' on':''),noms[k]+' ('+n[k]+')'); b.type='button'; b.setAttribute('role','tab'); b.setAttribute('aria-selected',TAB===k); b.onclick=function(){ TAB=k; afficher(); }; tb.appendChild(b); });
+    L.appendChild(tb);
+    rows=ROWS.filter(function(c){ return categorie(c)===TAB; });
+    if(TAB==='appel') rows=rows.slice().sort(function(a,b){ return a.debutTs-b.debutTs; });
+  }
+  if(!rows.length){L.appendChild(el('div','empty', admin ? 'Rien dans cet onglet.' : 'Aucun chantier pour l\'instant.'));return;}
+  rows.forEach(function(c){
+    var k=el('article','card'), h=el('div','h');
+    h.appendChild(el('h2',null,c.nom)); h.appendChild(el('span','c',c.conducteur)); k.appendChild(h);
+    k.appendChild(el('div','d',[c.adresse,c.ville].filter(Boolean).join(', ')));
+    k.appendChild(el('div','d','Début '+c.debut+' · Fin '+c.fin));
+    var ch=el('div','chips'); ch.appendChild(chip(c,'debut','Début')); ch.appendChild(chip(c,'fin','Fin')); k.appendChild(ch);
+    var acts=el('div','acts'); acts.appendChild(el('span'));
+    if(admin){ var db=el('button','del','Supprimer'); db.type='button'; db.onclick=function(){ if(!confirm('Supprimer définitivement le chantier « '+c.nom+' » ?')) return; db.disabled=true; api('delete',{id:c.id}).then(function(){ ROWS=ROWS.filter(function(x){return x.id!==c.id;}); afficher(); }).catch(function(x){ db.disabled=false; alert(x.message); }); }; acts.replaceChild(db, acts.firstChild); }
+    var mb=el('button','mod','Modifier ›'); mb.type='button'; mb.onclick=function(){ modifier(c); }; acts.appendChild(mb); k.appendChild(acts);
+    L.appendChild(k);
+  });
 }
 if('serviceWorker' in navigator){ window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js').catch(function(){}); }); }
 </script>
