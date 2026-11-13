@@ -16,7 +16,7 @@
 <style>
 :root{--navy:#004848;--teal:#1AA993;--teal-d:#00605F;--ink:#0D2626;--mute:#4A5E5C;--bg:#F2F6F5;--line:#C5D3D1}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;background:var(--bg);font-family:Montserrat,Helvetica,Arial,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--navy);font-family:Montserrat,Helvetica,Arial,sans-serif;color:var(--ink);-webkit-tap-highlight-color:transparent}
 .screen{display:none;min-height:100vh;min-height:100dvh;position:relative;overflow:hidden;flex-direction:column}
 .screen.on{display:flex}
 .wm{position:absolute;inset:0;opacity:.07;pointer-events:none}
@@ -179,7 +179,7 @@ html,body{overscroll-behavior:none}
 var API = 'https://script.google.com/macros/s/AKfycby37lrHAO8eUWifxtvZXGT8t_JXg8gUScN4UOdj7J7F8EtwWA0rMTTwVfII1NN5N9es/exec';
 var STATUTS = ['À contacter','Contacté','Fait'];
 var S = {nom: localStorage.getItem('icar_nom')||'', code: localStorage.getItem('icar_code')||'', role: localStorage.getItem('icar_role')||''};
-function go(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('on', s.id===id)}); window.scrollTo(0,0);}
+function go(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('on', s.id===id)}); var dk=(id==='splash'||id==='login'||id==='ok'); document.documentElement.style.background=document.body.style.background=dk?'#004848':'#F2F6F5'; window.scrollTo(0,0);}
 function api(action, payload){
   var body = Object.assign({action: action, code: S.code, nom: S.nom}, payload||{});
   return fetch(API, {method:'POST', headers:{'Content-Type':'text/plain;charset=utf-8'}, body: JSON.stringify(body)})
