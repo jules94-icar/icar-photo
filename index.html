@@ -207,9 +207,11 @@ function initUI(){
   document.getElementById('avatar').textContent = ini;
   document.getElementById('bonjour').textContent = 'Bonjour ' + (S.nom.split(' ')[0]||'') + ',';
   document.getElementById('conducteur').value = S.nom;
-  var admin = S.role==='admin';
-  document.getElementById('lbl-suivi').textContent = admin ? 'Suivi photographe' : 'Mes chantiers déclarés';
-  document.getElementById('titre-suivi').textContent = admin ? 'Suivi photographe' : 'Mes chantiers';
+  var admin = S.role==='admin', lect = S.role==='lecture';
+  document.getElementById('lbl-suivi').textContent = admin ? 'Suivi photographe' : (lect ? 'Voir tous les chantiers' : 'Mes chantiers déclarés');
+  document.getElementById('titre-suivi').textContent = admin ? 'Suivi photographe' : (lect ? 'Chantiers ICAR' : 'Mes chantiers');
+  document.querySelector('#home .center').style.display = lect ? 'none' : '';
+  document.querySelector('#home .hello h1').textContent = lect ? 'Suivi des chantiers et du photographe' : 'Un nouveau chantier à déclarer ?';
 }
 setTimeout(function(){ if(S.code && S.nom){ initUI(); go('home'); } else go('login'); }, 1400);
 
@@ -294,8 +296,8 @@ function ouvrirSuivi(){
 }
 function afficher(){
   var L=document.getElementById('list'); L.innerHTML='';
-  var admin=S.role==='admin', rows=ROWS;
-  if(admin){
+  var admin=S.role==='admin', lect=S.role==='lecture', rows=ROWS;
+  if(admin||lect){
     var noms={appel:'À appeler',cours:'En cours',fini:'Terminés'}, n={appel:0,cours:0,fini:0};
     ROWS.forEach(function(c){ n[categorie(c)]++; });
     var tb=el('div','tabs'); tb.setAttribute('role','tablist');
@@ -304,7 +306,7 @@ function afficher(){
     rows=ROWS.filter(function(c){ return categorie(c)===TAB; });
     if(TAB==='appel') rows=rows.slice().sort(function(a,b){ return a.debutTs-b.debutTs; });
   }
-  if(!rows.length){L.appendChild(el('div','empty', admin ? 'Rien dans cet onglet.' : 'Aucun chantier pour l\'instant.'));return;}
+  if(!rows.length){L.appendChild(el('div','empty', (admin||lect) ? 'Rien dans cet onglet.' : 'Aucun chantier pour l\'instant.'));return;}
   rows.forEach(function(c){
     var k=el('article','card'), h=el('div','h');
     h.appendChild(el('h2',null,c.nom)); h.appendChild(el('span','c',c.conducteur)); k.appendChild(h);
@@ -313,7 +315,7 @@ function afficher(){
     var ch=el('div','chips'); ch.appendChild(chip(c,'debut','Début')); ch.appendChild(chip(c,'fin','Fin')); k.appendChild(ch);
     var acts=el('div','acts'); acts.appendChild(el('span'));
     if(admin){ var db=el('button','del','Supprimer'); db.type='button'; db.onclick=function(){ if(!confirm('Supprimer définitivement le chantier « '+c.nom+' » ?')) return; db.disabled=true; api('delete',{id:c.id}).then(function(){ ROWS=ROWS.filter(function(x){return x.id!==c.id;}); afficher(); }).catch(function(x){ db.disabled=false; alert(x.message); }); }; acts.replaceChild(db, acts.firstChild); }
-    var mb=el('button','mod','Modifier ›'); mb.type='button'; mb.onclick=function(){ modifier(c); }; acts.appendChild(mb); k.appendChild(acts);
+    if(!lect){ var mb=el('button','mod','Modifier ›'); mb.type='button'; mb.onclick=function(){ modifier(c); }; acts.appendChild(mb); k.appendChild(acts); }
     L.appendChild(k);
   });
 }
